@@ -176,6 +176,10 @@ app.once('ready', function() {
         mainWindow = null;
     });
 
+    mainWindow.webContents.on('crashed', (a, b, c) => {
+        console.log(a, b, c);
+    });
+
     let inspectorShortcut = '';
     if(process.platform == 'darwin') {
         inspectorShortcut = 'Command+Alt+i';
