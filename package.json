@@ -58,6 +58,7 @@
   "dependencies": {
     "bindings": "^1.2.1",
     "debug": "^2.2.0",
+    "electron-push-receiver": "^1.0.3",
     "es6-promise": "^3.2.1",
     "lodash": "^4.16.4",
     "object.assign": "^4.0.4",

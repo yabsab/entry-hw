@@ -1,5 +1,6 @@
 'use strict';
 
+const { setup: setupPushReceiver } = require('electron-push-receiver');
 const electron = require('electron');
 const {app, BrowserWindow, Menu, globalShortcut, ipcMain, webContents, dialog} = electron;
 const path = require('path');
@@ -10,6 +11,26 @@ var mainWindow = null;
 var isClose = true;
 var roomId = [];
 let isForceClose = false;
+
+async function a () {
+    var c = await b();
+    console.log(c);
+}
+
+process.on('uncaughtException', function (error) {
+    // Handle the error
+    console.log(error);
+});
+
+function b () {
+    return new Promise((resolve)=> {
+        setTimeout(()=> {
+            resolve('okokoko');
+        }, 1000);
+    });
+}
+
+a();
 
 console.fslog = function (text) {    
     var log_path = path.join(__dirname, '..');
@@ -144,6 +165,8 @@ app.once('ready', function() {
             backgroundThrottling: false
         }
     });
+
+    setupPushReceiver(mainWindow.webContents);
 
     mainWindow.webContents.on('select-bluetooth-device', (event, deviceList, callback) => {
         event.preventDefault()
