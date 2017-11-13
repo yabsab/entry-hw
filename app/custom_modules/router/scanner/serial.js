@@ -44,6 +44,7 @@ Scanner.prototype.scan = function(serialport, extension, config, callback) {
 		var serverMode = config.serverMode;
 		var scanType = config.hardware.scanType;
 		var vendor = config.hardware.vendor;
+		var checkComName = config.hardware.comName;
 
 		if(vendor && checkObject(vendor)) {
 			vendor = vendor[process.platform];
@@ -98,17 +99,26 @@ Scanner.prototype.scan = function(serialport, extension, config, callback) {
 			if(self.config != config) return;
 
 			var isVendor = false;
+			var isComName = false;
+			var comName = device.comName || config.hardware.name;
 
 			if(Array.isArray(vendor)) {
-				isVendor = vendor.some(function (v) {
-					return device.manufacturer && device.manufacturer.indexOf(v) >= 0;
+				isVendor = vendor.some(function (name) {
+					return device.manufacturer && device.manufacturer.indexOf(name) >= 0;
 				});
 			} else if(vendor && device.manufacturer && device.manufacturer.indexOf(vendor) >= 0) {
 				isVendor = true;
 			}
 
-			if(!vendor || (device.manufacturer && isVendor) || (device.pnpId && device.pnpId.indexOf(pnpId) >= 0) || checkComPort) {
-				var comName = device.comName || config.hardware.name;
+			if (Array.isArray(checkComName)) {
+				isComName = checkComName.some(function (name) {
+					return comName.indexOf(name) >= 0;
+				});
+			} else if (checkComName && comName.indexOf(checkComName) >= 0) {
+				isComName = true;
+			}
+
+			if (!vendor || (device.manufacturer && isVendor) || (device.pnpId && device.pnpId.indexOf(pnpId) >= 0) || isComName || checkComPort) {
 
 				if(checkComPort && comName != myComPort) {
 					return;

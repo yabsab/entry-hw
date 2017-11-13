@@ -22,6 +22,7 @@
 		"control": "slave",
 		"duration": 32,
 		"vendor": "wch.cn",
+		"comName": "wchusbserial",
 		"baudRate": 115200
 	}
 }

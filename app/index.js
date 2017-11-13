@@ -12,25 +12,10 @@ var isClose = true;
 var roomId = [];
 let isForceClose = false;
 
-async function a () {
-    var c = await b();
-    console.log(c);
-}
-
 process.on('uncaughtException', function (error) {
     // Handle the error
     console.log(error);
 });
-
-function b () {
-    return new Promise((resolve)=> {
-        setTimeout(()=> {
-            resolve('okokoko');
-        }, 1000);
-    });
-}
-
-a();
 
 console.fslog = function (text) {    
     var log_path = path.join(__dirname, '..');

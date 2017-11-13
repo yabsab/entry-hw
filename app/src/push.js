@@ -21,8 +21,23 @@ ipcRenderer.on(TOKEN_UPDATED, (_, token) => {
     
 });// Send token);
 // Display notification
-ipcRenderer.on(NOTIFICATION_RECEIVED, (_, notification) => {
-    console.log('NOTIFICATION_RECEIVED', notification);
+ipcRenderer.on(NOTIFICATION_RECEIVED, (_, { notification }) => {
+    const { title = '알림', body = '알림이 도착하였습니다.', click_action } = notification;
+    console.log('NOTIFICATION_RECEIVED', title, body, click_action);
+    let myNotification = new Notification(
+        title,
+        {
+            body,
+        }
+    )
+
+    myNotification.onclick = () => {
+        console.log('Notification clicked', click_action);
+        if (click_action) {
+            shell.openExternal(click_action);
+        }
+    }
+
 });// display notification);
 // Start service
 ipcRenderer.send(START_NOTIFICATION_SERVICE, '382621349281');
