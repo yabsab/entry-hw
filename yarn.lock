@@ -769,11 +769,11 @@ electron-packager@^8.1.0:
     semver "^5.3.0"
 
 electron-push-receiver@^1.0.3:
-  version "1.0.3"
-  resolved "https://registry.yarnpkg.com/electron-push-receiver/-/electron-push-receiver-1.0.3.tgz#1f67949299bdb558ea961c6cc150fc74110f1710"
+  version "1.2.1"
+  resolved "https://registry.yarnpkg.com/electron-push-receiver/-/electron-push-receiver-1.2.1.tgz#810fee5b78fdf603f885f90efc32960bbf5b9e71"
   dependencies:
     electron-config "^1.0.0"
-    push-receiver "^1.0.0"
+    push-receiver "^1.1.1"
 
 electron@1.7.8:
   version "1.7.8"
@@ -1838,9 +1838,9 @@ punycode@^1.4.1:
   version "1.4.1"
   resolved "https://registry.yarnpkg.com/punycode/-/punycode-1.4.1.tgz#c0d5a63b2718800ad8e1eb0fa5269c84dd41845e"
 
-push-receiver@^1.0.0:
-  version "1.0.1"
-  resolved "https://registry.yarnpkg.com/push-receiver/-/push-receiver-1.0.1.tgz#6fe63d34870e184135ca20601680bad3b9b36222"
+push-receiver@^1.1.1:
+  version "1.1.1"
+  resolved "https://registry.yarnpkg.com/push-receiver/-/push-receiver-1.1.1.tgz#b77bb99c8e0cdd71399c99669d585649cf1b6830"
   dependencies:
     http_ece "^1.0.5"
     long "^3.2.0"
